@@ -1,0 +1,1361 @@
+sources:
+- name: Google Research Blog
+  url: https://research.google/blog/rss
+  topic: Big Tech
+  type: rss
+- name: Google Blog (Technology)
+  url: https://blog.google/technology/rss/
+  topic: Big Tech
+  type: rss
+- name: Google AI Blog
+  url: https://blog.google/technology/ai/rss/
+  topic: Big Tech
+  type: rss
+- name: Android Developers Blog
+  url: https://android-developers.googleblog.com/feeds/posts/default
+  topic: Big Tech
+  type: rss
+- name: Google Cloud Blog
+  url: https://cloud.google.com/blog/rss
+  topic: Big Tech
+  type: rss
+- name: Google Cloud AI Blog
+  url: https://cloud.google.com/blog/topics/ai-machine-learning/rss
+  topic: AI/ML
+  type: rss
+- name: Google Developers Blog
+  url: https://developers.googleblog.com/feeds/posts/default
+  topic: Dev Tools
+  type: rss
+- name: Firebase Blog
+  url: https://firebase.googleblog.com/feeds/posts/default
+  topic: Big Tech
+  type: rss
+- name: AWS Blog
+  url: https://aws.amazon.com/blogs/aws/feed/
+  topic: Big Tech
+  type: rss
+- name: AWS Machine Learning Blog
+  url: https://aws.amazon.com/blogs/machine-learning/feed/
+  topic: Big Tech
+  type: rss
+- name: AWS Architecture Blog
+  url: https://aws.amazon.com/blogs/architecture/feed/
+  topic: Big Tech
+  type: rss
+- name: AWS Security Blog
+  url: https://aws.amazon.com/blogs/security/feed/
+  topic: Big Tech
+  type: rss
+- name: AWS Open Source Blog
+  url: https://aws.amazon.com/blogs/opensource/feed/
+  topic: Big Tech
+  type: rss
+- name: Amazon Science
+  url: https://www.amazon.science/index.rss
+  topic: Big Tech
+  type: rss
+- name: Microsoft Dev Blogs
+  url: https://devblogs.microsoft.com/feed/
+  topic: Big Tech
+  type: rss
+- name: Microsoft .NET Blog
+  url: https://devblogs.microsoft.com/dotnet/feed/
+  topic: Big Tech
+  type: rss
+- name: Microsoft Python Blog
+  url: https://devblogs.microsoft.com/python/feed/
+  topic: Big Tech
+  type: rss
+- name: Microsoft Azure Blog
+  url: https://azure.microsoft.com/en-us/blog/feed/
+  topic: Big Tech
+  type: rss
+- name: Microsoft Research Blog
+  url: https://www.microsoft.com/en-us/research/feed/
+  topic: Big Tech
+  type: rss
+- name: Azure DevOps Blog
+  url: https://devblogs.microsoft.com/devops/feed/
+  topic: Big Tech
+  type: rss
+- name: Meta Engineering
+  url: https://engineering.fb.com/feed/
+  topic: Big Tech
+  type: rss
+- name: Meta AI Research
+  url: https://research.facebook.com/blog/rss/
+  topic: Big Tech
+  type: rss
+- name: Apple Machine Learning
+  url: https://machinelearning.apple.com/rss.xml
+  topic: Big Tech
+  type: rss
+- name: Apple Swift Blog
+  url: https://www.swift.org/atom.xml
+  topic: Big Tech
+  type: rss
+- name: NVIDIA Blog
+  url: https://blogs.nvidia.com/feed/
+  topic: Big Tech
+  type: rss
+- name: NVIDIA Developer Blog
+  url: https://developer.nvidia.com/blog/feed/
+  topic: Big Tech
+  type: rss
+- name: IBM Developer Blog
+  url: https://www.ibm.com/blogs/journey-to-ai/feed/
+  topic: Big Tech
+  type: rss
+- name: Intel Developer Blog
+  url: https://medium.com/intel-tech/feed
+  topic: Big Tech
+  type: rss
+- name: OpenAI Blog
+  url: https://openai.com/news/rss.xml
+  topic: AI/ML
+  type: rss
+- name: Anthropic News
+  url: https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml
+  topic: AI/ML
+  type: rss
+- name: Anthropic Engineering
+  url: https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml
+  topic: AI/ML
+  type: rss
+- name: Anthropic Research
+  url: https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml
+  topic: AI/ML
+  type: rss
+- name: Google DeepMind Blog
+  url: https://deepmind.google/blog/rss.xml
+  topic: AI/ML
+  type: rss
+- name: Hugging Face Blog
+  url: https://huggingface.co/blog/feed.xml
+  topic: AI/ML
+  type: rss
+- name: The Batch (DeepLearning.AI)
+  url: https://read.deeplearning.ai/the-batch/rss/
+  topic: AI/ML
+  type: rss
+  active: false
+- name: Mistral AI Blog
+  url: https://medium.com/mistral-ai/feed
+  topic: AI/ML
+  type: rss
+- name: Cohere AI Blog
+  url: https://cohere.com/blog/rss
+  topic: AI/ML
+  type: rss
+- name: PyTorch Blog
+  url: https://pytorch.org/blog/feed.xml
+  topic: AI/ML
+  type: rss
+- name: TensorFlow Blog
+  url: https://blog.tensorflow.org/feeds/posts/default
+  topic: AI/ML
+  type: rss
+- name: Fast.ai Blog
+  url: https://www.fast.ai/index.xml
+  topic: AI/ML
+  type: rss
+- name: Weights & Biases Blog
+  url: https://wandb.ai/blog/rss.xml
+  topic: AI/ML
+  type: rss
+- name: LangChain Blog
+  url: https://blog.langchain.dev/rss/
+  topic: AI/ML
+  type: rss
+- name: LlamaIndex Blog
+  url: https://medium.com/feed/llamaindex-blog
+  topic: AI/ML
+  type: rss
+- name: Replicate Blog
+  url: https://medium.com/replicate/feed
+  topic: AI/ML
+  type: rss
+- name: Together AI Blog
+  url: https://together.ai/blog/rss.xml
+  topic: AI/ML
+  type: rss
+- name: Modal Labs Blog
+  url: https://modal.com/blog/atom.xml
+  topic: AI/ML
+  type: rss
+- name: Perplexity AI Blog
+  url: https://medium.com/perplexity-ai/feed
+  topic: AI/ML
+  type: rss
+- name: Stability AI Blog
+  url: https://medium.com/stability-ai/feed
+  topic: AI/ML
+  type: rss
+- name: Qdrant Blog
+  url: https://qdrant.tech/blog/index.xml
+  topic: AI/ML
+  type: rss
+- name: Weaviate Blog
+  url: https://weaviate.io/blog/rss.xml
+  topic: AI/ML
+  type: rss
+- name: Pinecone Blog
+  url: https://medium.com/pinecone/feed
+  topic: AI/ML
+  type: rss
+- name: Streamlit Blog
+  url: https://blog.streamlit.io/rss/
+  topic: AI/ML
+  type: rss
+- name: BAIR Blog (Berkeley AI)
+  url: https://bair.berkeley.edu/blog/feed.xml
+  topic: AI Research
+  type: rss
+- name: CMU ML Blog
+  url: https://blog.ml.cmu.edu/feed
+  topic: AI Research
+  type: rss
+- name: Stanford AI Lab Blog
+  url: https://ai.stanford.edu/blog/feed.xml
+  topic: AI Research
+  type: rss
+- name: Papers With Code
+  url: https://paperswithcode.com/latest/feed
+  topic: AI Research
+  type: rss
+  active: false
+- name: ArXiv Blog
+  url: https://blog.arxiv.org/feed/
+  topic: AI Research
+  type: rss
+- name: Alignment Forum
+  url: https://www.alignmentforum.org/.rss
+  topic: AI Research
+  type: rss
+- name: Semantic Scholar Blog
+  url: https://medium.com/feed/ai2-blog
+  topic: AI Research
+  type: rss
+- name: ACM Tech News
+  url: https://rss.acm.org/technews/TechNews.xml
+  topic: AI Research
+  type: rss
+  active: false
+- name: TechCrunch AI
+  url: https://techcrunch.com/category/artificial-intelligence/feed/
+  topic: AI News
+  type: rss
+- name: VentureBeat AI
+  url: https://venturebeat.com/category/ai/feed/
+  topic: AI News
+  type: rss
+- name: MIT Technology Review AI
+  url: https://www.technologyreview.com/topic/artificial-intelligence/feed/
+  topic: AI News
+  type: rss
+- name: Wired AI
+  url: https://www.wired.com/feed/tag/ai/latest/rss
+  topic: AI News
+  type: rss
+- name: The Verge
+  url: https://www.theverge.com/rss/index.xml
+  topic: AI News
+  type: rss
+- name: Ars Technica
+  url: https://feeds.arstechnica.com/arstechnica/index
+  topic: AI News
+  type: rss
+- name: IEEE Spectrum
+  url: https://spectrum.ieee.org/feeds/feed.rss
+  topic: AI News
+  type: rss
+- name: InfoQ
+  url: https://feed.infoq.com/
+  topic: AI News
+  type: rss
+- name: Hacker News (Top)
+  url: https://hnrss.org/frontpage
+  topic: AI News
+  type: rss
+- name: Hacker News (Best)
+  url: https://hnrss.org/best
+  topic: AI News
+  type: rss
+- name: Dev.to
+  url: https://dev.to/feed
+  topic: AI News
+  type: rss
+- name: DZone
+  url: https://feeds.dzone.com/home
+  topic: AI News
+  type: rss
+- name: Stack Overflow Blog
+  url: https://stackoverflow.blog/feed/
+  topic: AI News
+  type: rss
+- name: Lobsters
+  url: https://lobste.rs/rss
+  topic: AI News
+  type: rss
+- name: TLDR Tech
+  url: https://tldr.tech/api/rss/tech
+  topic: AI News
+  type: rss
+- name: TLDR AI
+  url: https://tldr.tech/api/rss/ai
+  topic: AI News
+  type: rss
+- name: TLDR Web Dev
+  url: https://tldr.tech/api/rss/webdev
+  topic: AI News
+  type: rss
+- name: TLDR DevOps
+  url: https://tldr.tech/api/rss/devops
+  topic: AI News
+  type: rss
+- name: The Batch (DeepLearning.AI)
+  url: https://read.deeplearning.ai/the-batch/rss/
+  topic: AI News
+  type: rss
+  active: false
+- name: Netflix Tech Blog
+  url: https://netflixtechblog.com/feed
+  topic: Streaming
+  type: rss
+- name: Spotify Engineering
+  url: https://engineering.atspotify.com/feed/
+  topic: Streaming
+  type: rss
+- name: Hotstar Tech Blog
+  url: https://medium.com/hotstar-tech/feed
+  topic: Streaming
+  type: rss
+- name: Discord Engineering
+  url: https://medium.com/discord-engineering/feed
+  topic: Streaming
+  type: rss
+- name: Riot Games Tech
+  url: https://medium.com/riot-games-engineering/feed
+  topic: Streaming
+  type: rss
+- name: Roblox Tech Blog
+  url: https://medium.com/roblox-engineering/feed
+  topic: Streaming
+  type: rss
+- name: Twitch Engineering
+  url: https://blog.twitch.tv/en/feed/
+  topic: Streaming
+  type: rss
+- name: SoundCloud Developers
+  url: https://developers.soundcloud.com/blog/blog.rss
+  topic: Streaming
+  type: rss
+- name: Deezer Engineering
+  url: https://deezer.io/feed
+  topic: Streaming
+  type: rss
+- name: Uber Engineering
+  url: https://medium.com/uber-engineering/feed
+  topic: Ride-share
+  type: rss
+- name: Lyft Engineering
+  url: https://eng.lyft.com/feed
+  topic: Ride-share
+  type: rss
+- name: Swiggy Tech
+  url: https://bytes.swiggy.com/feed
+  topic: Ride-share
+  type: rss
+- name: DoorDash Engineering
+  url: https://medium.com/doordash-engineering/feed
+  topic: Ride-share
+  type: rss
+- name: Deliveroo Engineering
+  url: https://deliveroo.engineering/feed.xml
+  topic: Ride-share
+  type: rss
+- name: Grab Engineering
+  url: https://engineering.grab.com/feed.xml
+  topic: Ride-share
+  type: rss
+- name: Gojek Engineering
+  url: https://medium.com/gojekengineering/feed
+  topic: Ride-share
+  type: rss
+- name: Instacart Tech
+  url: https://tech.instacart.com/feed
+  topic: Ride-share
+  type: rss
+- name: Zomato Tech
+  url: https://www.zomato.com/blog/tech
+  topic: Ride-share
+  type: scrape
+- name: LinkedIn Engineering
+  url: https://medium.com/linkedin-engineering/feed
+  topic: Social
+  type: rss
+- name: Twitter/X Engineering
+  url: https://medium.com/x-engineering/feed
+  topic: Social
+  type: rss
+- name: Instagram Engineering
+  url: https://medium.com/instagram-engineering/feed
+  topic: Social
+  type: rss
+- name: Pinterest Engineering
+  url: https://medium.com/pinterest-engineering/feed
+  topic: Social
+  type: rss
+- name: Flickr Tech
+  url: https://code.flickr.net/feed/
+  topic: Social
+  type: rss
+- name: Slack Engineering
+  url: https://slack.engineering/feed/
+  topic: Social
+  type: rss
+- name: Medium Engineering
+  url: https://medium.engineering/feed
+  topic: Social
+  type: rss
+- name: Tumblr Engineering
+  url: https://engineering.tumblr.com/rss
+  topic: Social
+  type: rss
+- name: Reddit Engineering
+  url: https://medium.com/reddit-engineering/feed
+  topic: Social
+  type: rss
+- name: Nextdoor Engineering
+  url: https://engblog.nextdoor.com/feed
+  topic: Social
+  type: rss
+- name: Tinder Engineering
+  url: https://medium.com/tinder/feed
+  topic: Social
+  type: rss
+- name: Snap Engineering
+  url: https://medium.com/snap-engineering/feed
+  topic: Social
+  type: rss
+- name: TikTok Engineering
+  url: https://medium.com/tiktok-engineering/feed
+  topic: Social
+  type: rss
+- name: Airbnb Tech
+  url: https://medium.com/airbnb-engineering/feed
+  topic: E-commerce
+  type: rss
+- name: Shopify Engineering
+  url: https://medium.com/shopify-engineering/feed
+  topic: E-commerce
+  type: rss
+- name: Stripe Engineering
+  url: https://stripe.com/blog/feed.rss
+  topic: E-commerce
+  type: rss
+- name: eBay Tech
+  url: https://www.ebayinc.com/stories/news/rss/
+  topic: E-commerce
+  type: rss
+- name: Etsy Engineering
+  url: https://medium.com/etsy-engineering/feed
+  topic: E-commerce
+  type: rss
+- name: Booking.com Tech
+  url: https://medium.com/booking-com-development/feed
+  topic: E-commerce
+  type: rss
+- name: Expedia Group Tech
+  url: https://medium.com/expedia-group-tech/feed
+  topic: E-commerce
+  type: rss
+- name: Wayfair Tech
+  url: https://www.aboutwayfair.com/careers/tech-blog.rss
+  topic: E-commerce
+  type: rss
+- name: Stitch Fix Algorithms
+  url: https://multithreaded.stitchfix.com/feed.xml
+  topic: E-commerce
+  type: rss
+- name: Target Tech
+  url: https://target.github.io/feed.xml
+  topic: E-commerce
+  type: rss
+- name: Walmart Global Tech
+  url: https://medium.com/walmartglobaltech/feed
+  topic: E-commerce
+  type: rss
+- name: Skyscanner Engineering
+  url: https://medium.com/feed/@SkyscannerEng
+  topic: E-commerce
+  type: rss
+- name: Just Eat Engineering
+  url: https://medium.com/justeattakeaway-tech/feed
+  topic: E-commerce
+  type: rss
+- name: Trivago Tech
+  url: http://tech.trivago.com/rss.xml
+  topic: E-commerce
+  type: rss
+- name: HubSpot Engineering
+  url: https://product.hubspot.com/blog/rss.xml
+  topic: E-commerce
+  type: rss
+- name: GitHub Engineering
+  url: https://github.blog/engineering.atom
+  topic: Dev Tools
+  type: rss
+- name: GitHub Changelog
+  url: https://github.blog/changelog/feed/
+  topic: Dev Tools
+  type: rss
+- name: GitLab Blog
+  url: https://about.gitlab.com/atom.xml
+  topic: Dev Tools
+  type: rss
+- name: Dropbox Tech
+  url: https://medium.com/dropbox-engineering/feed
+  topic: Dev Tools
+  type: rss
+- name: Heroku Engineering
+  url: https://blog.heroku.com/rss
+  topic: Dev Tools
+  type: rss
+- name: Atlassian Engineering
+  url: https://developer.atlassian.com/blog/feed.xml
+  topic: Dev Tools
+  type: rss
+- name: Cloudflare Blog
+  url: https://blog.cloudflare.com/rss/
+  topic: Dev Tools
+  type: rss
+- name: Docker Blog
+  url: https://www.docker.com/blog/feed/
+  topic: Dev Tools
+  type: rss
+- name: Kubernetes Blog
+  url: https://kubernetes.io/feed.xml
+  topic: Dev Tools
+  type: rss
+- name: Elastic Blog
+  url: https://www.elastic.co/blog/feed
+  topic: Dev Tools
+  type: rss
+- name: HashiCorp Blog
+  url: https://www.hashicorp.com/blog/feed.xml
+  topic: Dev Tools
+  type: rss
+- name: Okta Developer Blog
+  url: https://developer.okta.com/feed.xml
+  topic: Dev Tools
+  type: rss
+- name: Auth0 Blog
+  url: https://auth0.com/blog/rss.xml
+  topic: Dev Tools
+  type: rss
+- name: Twilio Blog
+  url: https://www.twilio.com/blog/feed
+  topic: Dev Tools
+  type: rss
+- name: Mozilla Hacks
+  url: https://hacks.mozilla.org/feed/
+  topic: Dev Tools
+  type: rss
+- name: WebKit Blog
+  url: https://webkit.org/feed/atom/
+  topic: Dev Tools
+  type: rss
+- name: VS Code Blog
+  url: https://code.visualstudio.com/feed.xml
+  topic: Dev Tools
+  type: rss
+- name: JetBrains Blog
+  url: https://blog.jetbrains.com/feed
+  topic: Dev Tools
+  type: rss
+- name: Vercel Blog
+  url: https://vercel.com/rss.xml
+  topic: Dev Tools
+  type: rss
+- name: Netlify Blog
+  url: https://medium.com/netlify/feed
+  topic: Dev Tools
+  type: rss
+- name: Fly.io Blog
+  url: https://fly.io/blog/feed.xml
+  topic: Dev Tools
+  type: rss
+- name: CircleCI Blog
+  url: https://circleci.com/blog/feed.xml
+  topic: Dev Tools
+  type: rss
+- name: Jenkins Blog
+  url: https://medium.com/jenkins/feed
+  topic: Dev Tools
+  type: rss
+- name: Figma Blog
+  url: https://medium.com/figma-design/feed
+  topic: Dev Tools
+  type: rss
+- name: Linear Blog
+  url: https://medium.com/linear/feed
+  topic: Dev Tools
+  type: rss
+- name: Postman Blog
+  url: https://medium.com/postman-engineering/feed
+  topic: Dev Tools
+  type: rss
+- name: Databricks Blog
+  url: https://medium.com/databricks/feed
+  topic: Dev Tools
+  type: rss
+- name: Palantir Blog
+  url: https://blog.palantir.com/feed
+  topic: Dev Tools
+  type: rss
+- name: Salesforce Engineering
+  url: https://engineering.salesforce.com/feed/
+  topic: Dev Tools
+  type: rss
+- name: DigitalOcean Blog
+  url: https://medium.com/digitalocean/feed
+  topic: Cloud
+  type: rss
+- name: Backblaze Blog
+  url: https://www.backblaze.com/blog/feed/
+  topic: Cloud
+  type: rss
+- name: Red Hat Developer
+  url: https://developers.redhat.com/blog/feed
+  topic: Cloud
+  type: rss
+- name: Ubuntu Blog
+  url: https://ubuntu.com/blog/feed
+  topic: Cloud
+  type: rss
+- name: VMware Tanzu Blog
+  url: https://tanzu.vmware.com/developer/blog/feed.xml
+  topic: Cloud
+  type: rss
+- name: Istio Blog
+  url: https://istio.io/latest/news/feed.xml
+  topic: Cloud
+  type: rss
+- name: CNCF Blog
+  url: https://www.cncf.io/feed/
+  topic: Cloud
+  type: rss
+- name: OpenTelemetry Blog
+  url: https://opentelemetry.io/blog/index.xml
+  topic: Cloud
+  type: rss
+- name: Prometheus Blog
+  url: https://prometheus.io/blog/feed.xml
+  topic: Cloud
+  type: rss
+- name: Grafana Labs Blog
+  url: https://grafana.com/blog/index.xml
+  topic: Cloud
+  type: rss
+- name: Envoy Proxy Blog
+  url: https://blog.envoyproxy.io/feed
+  topic: Cloud
+  type: rss
+- name: Datadog Engineering
+  url: https://www.datadoghq.com/blog/rss.xml
+  topic: Observability
+  type: rss
+- name: New Relic Blog
+  url: https://newrelic.com/blog/feed
+  topic: Observability
+  type: rss
+- name: PagerDuty Engineering
+  url: https://medium.com/pagerduty/feed
+  topic: Observability
+  type: rss
+- name: Honeycomb.io Blog
+  url: https://medium.com/honeycombio/feed
+  topic: Observability
+  type: rss
+- name: Splunk Blog
+  url: https://medium.com/splunk-engineering/feed
+  topic: Observability
+  type: rss
+- name: Dynatrace Blog
+  url: https://www.dynatrace.com/news/blog/feed/
+  topic: Observability
+  type: rss
+- name: MongoDB Engineering
+  url: https://www.mongodb.com/blog/rss
+  topic: Databases
+  type: rss
+- name: Redis Blog
+  url: https://redis.com/blog/feed/
+  topic: Databases
+  type: rss
+- name: Snowflake Engineering
+  url: https://www.snowflake.com/blog/rss.xml
+  topic: Databases
+  type: rss
+- name: PlanetScale Blog
+  url: https://planetscale.com/blog/rss.xml
+  topic: Databases
+  type: rss
+- name: CockroachDB Blog
+  url: https://medium.com/cockroachdb/feed
+  topic: Databases
+  type: rss
+- name: Neon DB Blog
+  url: https://neon.tech/blog/rss.xml
+  topic: Databases
+  type: rss
+- name: Supabase Blog
+  url: https://supabase.com/blog/rss
+  topic: Databases
+  type: rss
+- name: ClickHouse Blog
+  url: https://clickhouse.com/rss.xml
+  topic: Databases
+  type: rss
+- name: DuckDB Blog
+  url: https://duckdb.org/feed.xml
+  topic: Databases
+  type: rss
+- name: Timescale Blog
+  url: https://www.timescale.com/blog/feed/
+  topic: Databases
+  type: rss
+- name: ScyllaDB Blog
+  url: https://medium.com/scylladb/feed
+  topic: Databases
+  type: rss
+- name: CockroachDB Blog
+  url: https://medium.com/cockroachdb/feed
+  topic: Databases
+  type: rss
+- name: dbt Labs Blog
+  url: https://www.getdbt.com/blog/rss.xml
+  topic: Data Engineering
+  type: rss
+- name: Airbyte Blog
+  url: https://airbyte.com/blog/rss.xml
+  topic: Data Engineering
+  type: rss
+- name: Confluent Blog
+  url: https://www.confluent.io/blog/rss.xml
+  topic: Data Engineering
+  type: rss
+- name: Apache Kafka Blog
+  url: https://medium.com/apache-kafka-by-confluent/feed
+  topic: Data Engineering
+  type: rss
+- name: Apache Airflow Blog
+  url: https://airflow.apache.org/blog/index.xml
+  topic: Data Engineering
+  type: rss
+- name: Prefect Blog
+  url: https://medium.com/the-prefect-blog/feed
+  topic: Data Engineering
+  type: rss
+- name: Dagster Blog
+  url: https://dagster.io/blog/rss.xml
+  topic: Data Engineering
+  type: rss
+- name: Fivetran Blog
+  url: https://medium.com/fivetran/feed
+  topic: Data Engineering
+  type: rss
+- name: Apache Flink Blog
+  url: https://medium.com/apache-flink/feed
+  topic: Data Engineering
+  type: rss
+- name: Delta Lake Blog
+  url: https://delta.io/rss.xml
+  topic: Data Engineering
+  type: rss
+- name: Apache Hudi Blog
+  url: https://hudi.apache.org/blog/rss.xml
+  topic: Data Engineering
+  type: rss
+- name: RabbitMQ Blog
+  url: https://medium.com/rabbitmq/feed
+  topic: Data Engineering
+  type: rss
+- name: Google Project Zero
+  url: https://googleprojectzero.blogspot.com/feeds/posts/default
+  topic: Security
+  type: rss
+- name: Microsoft Security Blog
+  url: https://www.microsoft.com/en-us/security/blog/feed/
+  topic: Security
+  type: rss
+- name: Trail of Bits Blog
+  url: https://blog.trailofbits.com/feed/
+  topic: Security
+  type: rss
+- name: Krebs on Security
+  url: https://krebsonsecurity.com/feed/
+  topic: Security
+  type: rss
+- name: Schneier on Security
+  url: https://www.schneier.com/feed/atom/
+  topic: Security
+  type: rss
+- name: CrowdStrike Blog
+  url: https://medium.com/crowdstrike/feed
+  topic: Security
+  type: rss
+- name: Palo Alto Networks Blog
+  url: https://www.paloaltonetworks.com/blog/feed/
+  topic: Security
+  type: rss
+- name: Cloudflare Security Blog
+  url: https://blog.cloudflare.com/tag/security/rss
+  topic: Security
+  type: rss
+- name: Snyk Blog
+  url: https://snyk.io/blog/feed/
+  topic: Security
+  type: rss
+- name: HackerOne Blog
+  url: https://medium.com/hackerone/feed
+  topic: Security
+  type: rss
+- name: Malwarebytes Labs
+  url: https://blog.malwarebytes.com/feed/
+  topic: Security
+  type: rss
+- name: Kaspersky Securelist
+  url: https://securelist.com/feed/
+  topic: Security
+  type: rss
+- name: Check Point Research
+  url: https://research.checkpoint.com/feed/
+  topic: Security
+  type: rss
+- name: OWASP Blog
+  url: https://owasp.org/feed.xml
+  topic: Security
+  type: rss
+- name: CISA Alerts
+  url: https://www.cisa.gov/uscert/ncas/all.xml
+  topic: Security
+  type: rss
+- name: Dark Reading
+  url: https://www.darkreading.com/rss.xml
+  topic: Security
+  type: rss
+- name: Bleeping Computer
+  url: https://www.bleepingcomputer.com/feed/
+  topic: Security
+  type: rss
+- name: The Hacker News
+  url: https://feeds.feedburner.com/TheHackersNews
+  topic: Security
+  type: rss
+- name: Razorpay Engineering Blog
+  url: https://engineering.razorpay.com/feed
+  topic: Fintech
+  type: rss
+- name: Razorpay Blog
+  url: https://razorpay.com/blog/feed/
+  topic: Fintech
+  type: rss
+- name: PayPal Tech
+  url: https://medium.com/paypal-tech/feed
+  topic: Fintech
+  type: rss
+- name: Square/Block Engineering
+  url: https://medium.com/square-corner-blog/feed
+  topic: Fintech
+  type: rss
+- name: Capital One Tech
+  url: https://medium.com/capital-one-tech/feed
+  topic: Fintech
+  type: rss
+- name: Coinbase Engineering
+  url: https://medium.com/coinbase/feed
+  topic: Fintech
+  type: rss
+- name: Robinhood Engineering
+  url: https://medium.com/robinhood-engineering/feed
+  topic: Fintech
+  type: rss
+- name: Wise Engineering
+  url: https://medium.com/wise-engineering/feed
+  topic: Fintech
+  type: rss
+- name: Plaid Engineering
+  url: https://medium.com/plaid-engineering/feed
+  topic: Fintech
+  type: rss
+- name: Wealthfront Engineering
+  url: https://eng.wealthfront.com/feed/
+  topic: Fintech
+  type: rss
+- name: GoCardless Tech
+  url: https://gocardless.com/content-platform/rss/resources.xml
+  topic: Fintech
+  type: rss
+- name: Zendesk Engineering
+  url: https://zendesk.engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Yelp Engineering
+  url: https://medium.com/yelp-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Asana Engineering
+  url: https://medium.com/asana-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Algolia Engineering
+  url: https://medium.com/algolia/feed
+  topic: Startup Engineering
+  type: rss
+- name: GoDaddy Engineering
+  url: https://medium.com/godaddy-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Indeed Engineering
+  url: https://engineering.indeedblog.com/feed/
+  topic: Startup Engineering
+  type: rss
+- name: Intercom Engineering
+  url: https://medium.com/intercom-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: New York Times Open
+  url: https://open.nytimes.com/feed
+  topic: Startup Engineering
+  type: rss
+- name: Guardian Developer Blog
+  url: https://www.theguardian.com/info/developer-blog/rss
+  topic: Startup Engineering
+  type: rss
+- name: Strava Engineering
+  url: https://medium.com/strava-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Gusto Engineering
+  url: https://engineering.gusto.com/rss/
+  topic: Startup Engineering
+  type: rss
+- name: Squarespace Engineering
+  url: https://engineering.squarespace.com/blog?format=rss
+  topic: Startup Engineering
+  type: rss
+- name: OLX Tech
+  url: https://tech.olx.com/feed
+  topic: Startup Engineering
+  type: rss
+- name: BBC Product & Tech
+  url: https://medium.com/bbc-product-technology/feed
+  topic: Startup Engineering
+  type: rss
+- name: Miro Engineering
+  url: https://medium.com/miro-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Box Tech Blog
+  url: https://medium.com/box-tech-blog/feed
+  topic: Startup Engineering
+  type: rss
+- name: Duolingo Engineering
+  url: https://blog.duolingo.com/rss/
+  topic: Startup Engineering
+  type: rss
+- name: Khan Academy Engineering
+  url: https://blog.khanacademy.org/feed/
+  topic: Startup Engineering
+  type: rss
+- name: Canva Engineering
+  url: https://www.canva.dev/blog/engineering/feed.xml
+  topic: Startup Engineering
+  type: rss
+- name: Adobe Tech Blog
+  url: https://medium.com/adobetech/feed
+  topic: Startup Engineering
+  type: rss
+- name: Peloton Engineering
+  url: https://medium.com/peloton-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Grubhub Engineering
+  url: https://bytes.grubhub.com/feed
+  topic: Startup Engineering
+  type: rss
+- name: Bumble Tech
+  url: https://medium.com/bumble-tech/feed
+  topic: Startup Engineering
+  type: rss
+- name: OkCupid Tech
+  url: https://tech.okcupid.com/feed
+  topic: Startup Engineering
+  type: rss
+- name: Coursera Engineering
+  url: https://medium.com/coursera-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Artsy Engineering
+  url: http://artsy.github.io/feed
+  topic: Startup Engineering
+  type: rss
+- name: Jane Street Tech
+  url: https://blogs.janestreet.com/feed.xml
+  topic: Startup Engineering
+  type: rss
+- name: Waymo Blog
+  url: https://medium.com/waymo/feed
+  topic: Startup Engineering
+  type: rss
+- name: Wikipedia Engineering
+  url: https://techblog.wikimedia.org/feed/
+  topic: Startup Engineering
+  type: rss
+- name: Atlassian Developer Blog
+  url: https://medium.com/atlassian-developer/feed
+  topic: Startup Engineering
+  type: rss
+- name: Amplitude Engineering
+  url: https://medium.com/amplitude-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Eventbrite Engineering
+  url: https://medium.com/eventbrite-engineering/feed
+  topic: Startup Engineering
+  type: rss
+- name: Deliveroo Engineering
+  url: https://deliveroo.engineering/feed.xml
+  topic: Startup Engineering
+  type: rss
+- name: Quora Engineering
+  url: https://quoraengineering.quora.com
+  topic: Startup Engineering
+  type: scrape
+- name: Martin Fowler
+  url: https://martinfowler.com/feed.atom
+  topic: Thought Leadership
+  type: rss
+- name: High Scalability
+  url: https://medium.com/high-scalability/feed
+  topic: Thought Leadership
+  type: rss
+- name: Joel on Software
+  url: https://www.joelonsoftware.com/feed/
+  topic: Thought Leadership
+  type: rss
+- name: Julia Evans
+  url: https://jvns.ca/atom.xml
+  topic: Thought Leadership
+  type: rss
+- name: Dan Luu
+  url: https://danluu.com/atom.xml
+  topic: Thought Leadership
+  type: rss
+- name: Coding Horror (Jeff Atwood)
+  url: https://blog.codinghorror.com/rss/
+  topic: Thought Leadership
+  type: rss
+- name: Brendan Gregg
+  url: http://www.brendangregg.com/blog/rss.xml
+  topic: Thought Leadership
+  type: rss
+- name: The Pragmatic Engineer
+  url: https://blog.pragmaticengineer.com/rss/
+  topic: Thought Leadership
+  type: rss
+- name: ByteByteGo Blog
+  url: https://blog.bytebytego.com/feed
+  topic: Thought Leadership
+  type: rss
+- name: Architecture Notes
+  url: https://medium.com/architecture-notes/feed
+  topic: Thought Leadership
+  type: rss
+- name: Rachel by the Bay
+  url: https://rachelbythebay.com/w/atom.xml
+  topic: Thought Leadership
+  type: rss
+- name: Software Engineering Daily
+  url: https://softwareengineeringdaily.com/feed/
+  topic: Thought Leadership
+  type: rss
+- name: Phoronix
+  url: https://www.phoronix.com/rss.php
+  topic: Hardware
+  type: rss
+- name: Tom's Hardware
+  url: https://www.tomshardware.com/feeds/all
+  topic: Hardware
+  type: rss
+- name: IEEE Spectrum
+  url: https://spectrum.ieee.org/feeds/feed.rss
+  topic: Hardware
+  type: rss
+- name: AnandTech
+  url: https://www.anandtech.com/rss/
+  topic: Hardware
+  type: rss
+- name: ServeTheHome
+  url: https://www.servethehome.com/feed/
+  topic: Hardware
+  type: rss
+- name: EEJournal
+  url: https://www.eejournal.com/feed/
+  topic: Hardware
+  type: rss
+- name: SemiAnalysis
+  url: https://www.semianalysis.com/feed
+  topic: Hardware
+  type: rss
+- name: Chips and Cheese
+  url: https://chipsandcheese.com/feed/
+  topic: Hardware
+  type: rss
+- name: NVIDIA Technical Blog
+  url: https://developer.nvidia.com/blog/feed/
+  topic: Hardware
+  type: rss
+- name: AMD Community Blogs
+  url: https://community.amd.com/t5/blogs/ct-p/Blogs/feed.rss
+  topic: Hardware
+  type: rss
+  active: false
+- name: Arm Developer
+  url: https://community.arm.com/arm-community-blogs/b/architectures-and-processors-blog/rss
+  topic: Hardware
+  type: rss
+- name: Ars Technica Hardware
+  url: https://feeds.arstechnica.com/arstechnica/technology-lab
+  topic: Hardware
+  type: rss
+- name: The Register (Hardware)
+  url: https://www.theregister.com/hardware/headlines.atom
+  topic: Hardware
+  type: rss
+- name: 9to5Mac
+  url: https://9to5mac.com/feed/
+  topic: Mobile
+  type: rss
+- name: 9to5Google
+  url: https://9to5google.com/feed/
+  topic: Mobile
+  type: rss
+- name: Android Authority
+  url: https://www.androidauthority.com/feed/
+  topic: Mobile
+  type: rss
+- name: MacRumors
+  url: https://feeds.macrumors.com/MacRumors-All
+  topic: Mobile
+  type: rss
+- name: Apple Developer News
+  url: https://developer.apple.com/news/rss/news.rss
+  topic: Mobile
+  type: rss
+- name: Apple Newsroom
+  url: https://www.apple.com/newsroom/rss-feed.rss
+  topic: Mobile
+  type: rss
+- name: Android Developers Blog
+  url: https://android-developers.googleblog.com/feeds/posts/default
+  topic: Mobile
+  type: rss
+- name: Hacker News (iOS)
+  url: https://hnrss.org/newest?q=iOS+mobile
+  topic: Mobile
+  type: rss
+- name: Flutter Blog
+  url: https://medium.com/feed/flutter
+  topic: Mobile
+  type: rss
+- name: iOS Dev Weekly
+  url: https://iosdevweekly.com/issues.rss
+  topic: Mobile
+  type: rss
+- name: Linux Foundation Blog
+  url: https://www.linuxfoundation.org/blog/rss.xml
+  topic: Open Source
+  type: rss
+- name: LWN.net
+  url: https://lwn.net/headlines/rss
+  topic: Open Source
+  type: rss
+- name: Red Hat Blog
+  url: https://www.redhat.com/en/rss/blog
+  topic: Open Source
+  type: rss
+- name: Ubuntu Blog
+  url: https://ubuntu.com/blog/feed
+  topic: Open Source
+  type: rss
+- name: GNOME Blog
+  url: https://blogs.gnome.org/feed/
+  topic: Open Source
+  type: rss
+- name: KDE Dot News
+  url: https://planet.kde.org/index.xml
+  topic: Open Source
+  type: rss
+- name: Fedora Magazine
+  url: https://fedoramagazine.org/feed/
+  topic: Open Source
+  type: rss
+- name: FreeBSD Journal
+  url: https://freebsdfoundation.org/feed/
+  topic: Open Source
+  type: rss
+- name: OpenSSF Blog
+  url: https://openssf.org/feed/
+  topic: Open Source
+  type: rss
+- name: CNCF Blog
+  url: https://www.cncf.io/feed/
+  topic: Open Source
+  type: rss
+- name: Apache Software Foundation
+  url: https://blogs.apache.org/foundation/feed/entries/atom
+  topic: Open Source
+  type: rss
+  active: false
+- name: Mozilla Hacks
+  url: https://hacks.mozilla.org/feed/
+  topic: Open Source
+  type: rss
+- name: Google Open Source Blog
+  url: https://opensource.googleblog.com/feeds/posts/default
+  topic: Open Source
+  type: rss
+  active: false
+- name: Microsoft Open Source Blog
+  url: https://cloudblogs.microsoft.com/opensource/feed/
+  topic: Open Source
+  type: rss
+- name: Meta Open Source
+  url: https://medium.com/meta-open-source/feed
+  topic: Open Source
+  type: rss
+- name: Cloudflare Blog
+  url: https://blog.cloudflare.com/rss/
+  topic: Cloud
+  type: rss
+- name: Vercel Blog
+  url: https://vercel.com/rss.xml
+  topic: Dev Tools
+  type: rss
+- name: Supabase Blog
+  url: https://supabase.com/blog/rss
+  topic: Databases
+  type: rss
+- name: PlanetScale Blog
+  url: https://planetscale.com/blog/rss.xml
+  topic: Databases
+  type: rss
+- name: Neon Database Blog
+  url: https://neon.tech/blog/rss.xml
+  topic: Databases
+  type: rss
+- name: Turso Blog
+  url: https://turso.tech/blog/feed.xml
+  topic: Databases
+  type: rss
+- name: Wired (Tech)
+  url: https://www.wired.com/feed/category/gear/latest/rss
+  topic: AI News
+  type: rss
+- name: TechCrunch
+  url: https://techcrunch.com/feed/
+  topic: AI News
+  type: rss
+- name: The Verge
+  url: https://www.theverge.com/rss/index.xml
+  topic: AI News
+  type: rss
+- name: Ars Technica
+  url: https://feeds.arstechnica.com/arstechnica/index
+  topic: AI News
+  type: rss
+- name: MIT Technology Review
+  url: https://www.technologyreview.com/feed/
+  topic: AI News
+  type: rss
+- name: VentureBeat
+  url: https://venturebeat.com/feed/
+  topic: AI News
+  type: rss
+- name: The Register
+  url: https://www.theregister.com/headlines.atom
+  topic: AI News
+  type: rss
+- name: ZDNet
+  url: https://www.zdnet.com/news/rss.xml
+  topic: AI News
+  type: rss
+- name: InfoQ
+  url: https://feed.infoq.com/
+  topic: Dev Tools
+  type: rss
+- name: DZone
+  url: https://feeds.dzone.com/home
+  topic: Dev Tools
+  type: rss
+- name: Smashing Magazine
+  url: https://www.smashingmagazine.com/feed/
+  topic: Dev Tools
+  type: rss
+- name: CSS-Tricks
+  url: https://css-tricks.com/feed/
+  topic: Dev Tools
+  type: rss
+- name: web.dev
+  url: https://web.dev/feed.xml
+  topic: Dev Tools
+  type: rss
+- name: Increment Magazine
+  url: https://increment.com/feeds/rss/
+  topic: Thought Leadership
+  type: rss
+  active: false
+- name: ACM Queue
+  url: https://queue.acm.org/rss/feeds/queuecontent.xml
+  topic: Thought Leadership
+  type: rss
+- name: Schneier on Security
+  url: https://www.schneier.com/feed/atom/
+  topic: Security
+  type: rss
+- name: SANS Internet Storm Center
+  url: https://isc.sans.edu/rssfeed_full.xml
+  topic: Security
+  type: rss
+- name: Malwarebytes Blog
+  url: https://www.malwarebytes.com/blog/feed/index.xml
+  topic: Security
+  type: rss
+- name: Sophos News
+  url: https://news.sophos.com/en-us/feed/
+  topic: Security
+  type: rss
+- name: Trail of Bits Blog
+  url: https://blog.trailofbits.com/feed/
+  topic: Security
+  type: rss
+- name: Stripe Engineering Blog
+  url: https://medium.com/stripe-engineering/feed
+  topic: Fintech
+  type: rss
+- name: Plaid Blog
+  url: https://plaid.com/blog/rss/
+  topic: Fintech
+  type: rss
+- name: Coinbase Engineering
+  url: https://medium.com/coinbase/feed
+  topic: Fintech
+  type: rss
+- name: Robinhood Engineering
+  url: https://medium.com/robinhood-engineering/feed
+  topic: Fintech
+  type: rss

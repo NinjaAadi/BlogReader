@@ -1,0 +1,32 @@
+# Environment — never commit secrets
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.Python
+
+# SQLite database
+*.db
+*.db-shm
+*.db-wal
+
+# Logs & PIDs (generated at runtime)
+*.log
+*.pid
+
+# Frontend build output & dependencies
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

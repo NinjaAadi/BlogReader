@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: #060b18;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: #060b18; }
+  ::-webkit-scrollbar-thumb { background: #1e2d47; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2d4470; }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 cursor-pointer border-0 outline-none select-none;
+  }
+  .btn-primary {
+    @apply btn bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white shadow-lg shadow-blue-600/20;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent hover:bg-white/5 text-slate-400 hover:text-white;
+  }
+  .btn-outline {
+    @apply btn border border-border text-slate-400 hover:border-blue-500/50 hover:text-white hover:bg-white/5;
+  }
+
+  .card {
+    @apply bg-card border border-border rounded-xl p-4 transition-all duration-200 relative overflow-hidden;
+  }
+  .card-interactive {
+    @apply card cursor-pointer hover:border-blue-500/30 hover:bg-card-hover hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5;
+  }
+
+  .tag {
+    @apply text-xs px-2.5 py-0.5 rounded-full font-medium;
+  }
+
+  .input {
+    @apply bg-surface border border-border text-sm text-white rounded-lg outline-none
+           focus:border-blue-500/60 focus:ring-2 focus:ring-blue-500/10 transition-all duration-150
+           placeholder:text-muted;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #111d33 25%, #162240 50%, #111d33 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+/* Glow effect on card hover */
+.card-glow:hover::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.3), transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.4;
+}
