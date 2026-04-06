@@ -113,6 +113,100 @@ The script will:
 
 ---
 
+## Access from Phone or Other Devices
+
+The app runs on your Mac. To access it from your phone, tablet, or another PC — on any network, not just home WiFi — use **Tailscale** (free, no public exposure).
+
+### How it works
+
+```
+Android / iPhone / Windows PC (Tailscale)
+        ──private encrypted tunnel──▶ Mac (Tailscale)
+                                        ├── Vite  :5173
+                                        └── FastAPI :8000
+```
+
+- No port forwarding, no router changes
+- Mac gets a stable private IP (`100.x.x.x`) that never changes
+- Works on any WiFi, mobile data, anywhere in the world
+
+### One-time setup
+
+**Step 1 — Install Tailscale on your Mac**
+
+```bash
+brew install tailscale
+sudo tailscale up    # opens browser to sign in (Google / GitHub / email)
+```
+
+**Step 2 — Install Tailscale on your other device**
+
+| Device | Install |
+|---|---|
+| **Android** | Play Store → search **Tailscale** → Install |
+| **iPhone / iPad** | App Store → search **Tailscale** → Install |
+| **Windows** | [tailscale.com/download](https://tailscale.com/download) → Install |
+
+Sign in with the **same account** you used on the Mac.
+
+**Step 3 — Get the Mac's Tailscale IP**
+
+```bash
+tailscale ip -4
+# prints: 100.x.x.x
+```
+
+**Step 4 — Open the app**
+
+Run `./start.sh` on the Mac — it will print the URL automatically:
+
+```
+  ─────────────────────────────────────────
+  On your phone (any network, via Tailscale):
+  http://100.x.x.x:5173
+
+  On your phone (same WiFi only):
+  http://192.168.x.x:5173
+  ─────────────────────────────────────────
+```
+
+Open the Tailscale URL in Chrome on your phone. Works from anywhere.
+
+---
+
+## Install as a Webapp (PWA)
+
+The app is a Progressive Web App — you can add it to your home screen so it opens like a native app (no browser chrome, full screen).
+
+**Android (Chrome):**
+1. Open the Tailscale URL in Chrome
+2. Tap the **⋮** menu → **Add to Home screen**
+3. Tap **Add** — an icon appears on your home screen
+
+**iPhone (Safari):**
+1. Open the URL in Safari (Chrome won't allow PWA install on iOS)
+2. Tap the **Share** button → **Add to Home Screen**
+3. Tap **Add**
+
+**Windows / PC (Chrome):**
+1. Open `http://localhost:5173` in Chrome
+2. Click the install icon in the address bar (or **⋮** → **Install Blog Notifier**)
+
+---
+
+## Mobile Tips
+
+| Gesture | Action |
+|---|---|
+| **Tap** a card | Opens the article in an external browser tab |
+| **Long press** a card (500ms) | Opens the article in the in-app reader |
+| **Tap the book icon** on a card | Opens in-app reader |
+| **Tap the bookmark icon** on a card | Bookmarks / unbookmarks |
+
+The in-app reader fetches and displays the full article text inside the app — no need to leave BlogReader.
+
+---
+
 ## Telegram Setup (Detailed)
 
 ### Part A — Create your Telegram bot

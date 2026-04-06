@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { topicMeta } from './TopicFilter'
 import { api } from '../api'
 
@@ -56,7 +56,22 @@ export default function BlogCard({ article, onSeen, onBookmark, onRead }) {
   const accentBorder = ACCENT_MAP[article.topic] || 'border-l-slate-500'
   const favicon = getFavicon(article.url)
 
-  const handleOpen = async () => {
+  const longPressTimer = useRef(null)
+  const didLongPress = useRef(false)
+
+  const handleTouchStart = () => {
+    didLongPress.current = false
+    longPressTimer.current = setTimeout(() => {
+      didLongPress.current = true
+      if (navigator.vibrate) navigator.vibrate(40)
+      onRead?.(article)
+    }, 500)
+  }
+
+  const cancelLongPress = () => clearTimeout(longPressTimer.current)
+
+  const handleOpen = async (e) => {
+    if (didLongPress.current) return
     window.open(article.url, '_blank', 'noopener,noreferrer')
     if (!seen) {
       setSeen(true)
@@ -76,6 +91,9 @@ export default function BlogCard({ article, onSeen, onBookmark, onRead }) {
   return (
     <article
       onClick={handleOpen}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={cancelLongPress}
+      onTouchMove={cancelLongPress}
       className={`
         group relative flex flex-col bg-card border border-border rounded-xl p-4
         border-l-2 ${accentBorder}
@@ -97,7 +115,7 @@ export default function BlogCard({ article, onSeen, onBookmark, onRead }) {
           <button
             onClick={(e) => { e.stopPropagation(); onRead(article) }}
             title="Read in-app"
-            className="p-1 rounded-md text-muted opacity-0 group-hover:opacity-100 hover:text-blue-400 hover:bg-blue-400/10 transition-all"
+            className="p-1 rounded-md text-muted opacity-60 sm:opacity-0 sm:group-hover:opacity-100 hover:text-blue-400 hover:bg-blue-400/10 transition-all"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -110,7 +128,7 @@ export default function BlogCard({ article, onSeen, onBookmark, onRead }) {
           className={`p-1 rounded-md transition-all ${
             bookmarked
               ? 'text-amber-400 bg-amber-400/10'
-              : 'text-muted opacity-0 group-hover:opacity-100 hover:text-amber-400 hover:bg-amber-400/10'
+              : 'text-muted opacity-60 sm:opacity-0 sm:group-hover:opacity-100 hover:text-amber-400 hover:bg-amber-400/10'
           }`}
         >
           <svg className="w-3.5 h-3.5" fill={bookmarked ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">

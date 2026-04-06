@@ -335,7 +335,7 @@ export default function App() {
         />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 shadow-lg shadow-blue-500/30">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -375,7 +375,7 @@ export default function App() {
 
       {/* ── Tabs ── */}
       <div className="bg-surface border-b border-border">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <nav className="flex gap-1 overflow-x-auto">
             {TABS.map(tab => {
               const count = tab === 'Bookmarks'
@@ -454,15 +454,16 @@ export default function App() {
       </div>
 
       {/* ── Main content ── */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-6 py-6 flex flex-col gap-5">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 py-4 sm:py-6 flex flex-col gap-4 sm:gap-5">
 
         {/* ── Feed tab ── */}
         {activeTab === 'Feed' && (
           <>
             <TopicFilter topics={topics} selected={activeTopic} onSelect={handleTopicChange} />
 
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="relative">
+            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+              <div className="flex items-center gap-2 flex-1 min-w-0">
+              <div className="relative flex-shrink-0">
                 <select
                   value={activeSource}
                   onChange={e => setActiveSource(e.target.value)}
@@ -476,7 +477,7 @@ export default function App() {
                 </svg>
               </div>
 
-              <div className="relative flex-1 min-w-[180px] max-w-sm">
+              <div className="relative flex-1 min-w-0">
                 <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -496,7 +497,9 @@ export default function App() {
                   </button>
                 )}
               </div>
+              </div>{/* end source+search row */}
 
+              <div className="flex flex-wrap items-center gap-2 sm:contents">
               <button
                 onClick={() => setShowUnread(!showUnread)}
                 className={`btn flex items-center gap-2 text-xs border transition-all ${
@@ -545,6 +548,7 @@ export default function App() {
                 <span className="text-slate-300 font-medium">{filtered.length}</span>{' '}
                 article{filtered.length !== 1 ? 's' : ''}
               </span>
+              </div>{/* end controls row */}
             </div>
 
             {/* Keyboard shortcuts hint */}
@@ -817,7 +821,7 @@ function RandomArticleModal({ article, onClose, onRead }) {
 
 function ListEmptyState({ icon, title, desc }) {
   return (
-    <div className="flex flex-col items-center justify-center py-28 text-center animate-fade-in">
+    <div className="flex flex-col items-center justify-center py-12 sm:py-28 text-center animate-fade-in">
       <div className="text-5xl mb-4 opacity-60">{icon}</div>
       <p className="text-white font-semibold mb-1">{title}</p>
       <p className="text-muted text-sm">{desc}</p>
@@ -869,7 +873,7 @@ function SkeletonGrid() {
 
 function EmptyState() {
   return (
-    <div className="flex flex-col items-center justify-center py-28 text-center animate-fade-in">
+    <div className="flex flex-col items-center justify-center py-12 sm:py-28 text-center animate-fade-in">
       <div className="text-5xl mb-4 opacity-60">📭</div>
       <p className="text-white font-semibold mb-1">No articles found</p>
       <p className="text-muted text-sm">Try adjusting your filters or trigger a manual fetch</p>
@@ -879,7 +883,7 @@ function EmptyState() {
 
 function ErrorState({ message, onRetry }) {
   return (
-    <div className="flex flex-col items-center justify-center py-28 text-center animate-fade-in">
+    <div className="flex flex-col items-center justify-center py-12 sm:py-28 text-center animate-fade-in">
       <div className="text-5xl mb-4 opacity-60">⚠️</div>
       <p className="text-white font-semibold mb-1">Could not load articles</p>
       <p className="text-muted text-sm mb-5">{message}</p>
