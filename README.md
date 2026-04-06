@@ -11,7 +11,9 @@ A self-hosted engineering blog aggregator that pulls the latest posts from **270
 | **270+ sources** | Big Tech, AI/ML, AI News, TLDR, The Batch, Security, Cloud, DevOps and 10 more topics |
 | **Auto-fetch** | Every 5 hours via APScheduler |
 | **Telegram alerts** | Instant message for every new article (requires VPN in some regions) |
+| **Telegram bot commands** | Control the app from Telegram — `/random`, `/fetch`, `/stats`, `/digest`, `/topic`, `/pause`, `/resume` |
 | **React UI** | Topic/source filter, full-text search, unread toggle, pagination, random-unread |
+| **PWA** | Install as a home screen app on Android, iPhone, or desktop |
 | **Daily DB cleanup** | Articles older than 90 days deleted at 03:00 UTC; unread & 10 most recent per source kept |
 | **REST API** | Full FastAPI backend with interactive docs at `/docs` |
 
@@ -280,6 +282,49 @@ Expected response:
 You'll receive a test message in your Telegram chat.
 
 > **Note:** If you get a 403 error, your network/ISP is blocking `api.telegram.org`. Connect to a VPN and try again. This is common with some Indian ISPs.
+
+---
+
+## Telegram Bot Commands
+
+Once Telegram is configured, the bot listens for commands — just open your chat with the bot and type `/`.
+
+The command menu auto-populates in Telegram (tap `/` to see all options).
+
+| Command | What it does |
+|---|---|
+| `/random` | Sends a random unread article and marks it as read |
+| `/fetch` | Triggers a manual fetch of all sources in the background |
+| `/stats` | Replies with total articles, unread count, bookmarks, active sources, DB size |
+| `/digest` | Sends the top 10 unread articles right now |
+| `/topic <name>` | Sends the latest 5 articles from a specific topic |
+| `/pause` | Pauses all incoming Telegram notifications |
+| `/resume` | Resumes Telegram notifications |
+| `/help` | Shows all available commands |
+
+**Examples:**
+
+```
+/topic AI/ML
+/topic Big Tech
+/topic Security
+```
+
+> **Note:** The bot starts automatically with `./start.sh`. No extra setup needed beyond the existing `BOT_TOKEN` and `CHAT_ID` in `.env`.
+
+### How it works
+
+The backend runs a background thread that long-polls Telegram's `getUpdates` API. When you send a command, the bot processes it instantly and replies in the same chat. It coexists with outbound notifications — both work simultaneously.
+
+### `/pause` and `/resume`
+
+Useful when you want to focus without interruptions:
+
+1. Send `/pause` → all new-article notifications stop
+2. You can still use `/random`, `/stats`, etc. — only outbound alerts are paused
+3. Send `/resume` → notifications come back on
+
+> Pause state resets when the backend restarts.
 
 ---
 
