@@ -57,9 +57,9 @@ async def lifespan(app: FastAPI):
     init_db()
     load_sources_from_yaml()
 
-    logger.info("Running initial fetch in background...")
+    logger.info("Running initial fetch in background (no notifications)...")
     import threading
-    t = threading.Thread(target=fetch_all_sources, daemon=True)
+    t = threading.Thread(target=lambda: fetch_all_sources(notify=False), daemon=True)
     t.start()
 
     start_scheduler(fetch_all_sources)

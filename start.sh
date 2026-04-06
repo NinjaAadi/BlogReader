@@ -115,6 +115,23 @@ done
 # ── Open browser ───────────────────────────────────────────
 echo ""
 success "Both services running!"
+
+TAILSCALE_IP=$(tailscale ip -4 2>/dev/null || echo "")
+LOCAL_IP=$(ipconfig getifaddr en0 2>/dev/null \
+  || ipconfig getifaddr en1 2>/dev/null \
+  || hostname -I 2>/dev/null | awk '{print $1}' || echo "")
+
+echo ""
+echo "  ─────────────────────────────────────────"
+if [ -n "$TAILSCALE_IP" ]; then
+  echo -e "  On your phone (any network, via Tailscale):"
+  echo -e "  ${CYAN}http://$TAILSCALE_IP:$FRONTEND_PORT${NC}"
+fi
+if [ -n "$LOCAL_IP" ]; then
+  echo -e "  On your phone (same WiFi only):"
+  echo -e "  ${CYAN}http://$LOCAL_IP:$FRONTEND_PORT${NC}"
+fi
+echo "  ─────────────────────────────────────────"
 echo ""
 echo -e "  Press ${BOLD}Ctrl+C${NC} to stop both services."
 echo ""

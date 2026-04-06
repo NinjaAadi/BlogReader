@@ -187,7 +187,7 @@ def fetch_scrape(source: Dict) -> List[Dict]:
 
 # ── Main fetch loop ───────────────────────────────────────
 
-def fetch_all_sources() -> int:
+def fetch_all_sources(notify: bool = True) -> int:
     from notifier import send_notification  # avoid circular at import time
 
     sources = get_sources_list()
@@ -218,13 +218,19 @@ def fetch_all_sources() -> int:
     # Send Telegram notifications for all new unnotified articles
     unnotified = get_unnotified()
     if unnotified:
-        logger.info(f"Sending {len(unnotified)} Telegram notification(s)...")
-        for article in unnotified:
-            try:
-                send_notification(article)
+        if notify:
+            logger.info(f"Sending {len(unnotified)} Telegram notification(s)...")
+            for article in unnotified:
+                try:
+                    send_notification(article)
+                    mark_notified(article["id"])
+                except Exception as e:
+                    logger.error(f"Notification failed for article {article['id']}: {e}")
+        else:
+            # Startup seed: mark all existing articles as notified without sending
+            logger.info(f"Seeding {len(unnotified)} existing articles as notified (no Telegram)...")
+            for article in unnotified:
                 mark_notified(article["id"])
-            except Exception as e:
-                logger.error(f"Notification failed for article {article['id']}: {e}")
 
     logger.info(f"Fetch complete. {total_new} new articles total.")
     return total_new
