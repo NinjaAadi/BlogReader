@@ -76,6 +76,14 @@ def init_db():
                 conn.execute(idx_sql)
             except Exception:
                 pass
+        # Fix articles where the RSS feed provided a future published_at date
+        # (e.g. pre-published release notes). Clamp to fetched_at so filters work correctly.
+        try:
+            conn.execute(
+                "UPDATE articles SET published_at = fetched_at WHERE published_at > CURRENT_TIMESTAMP"
+            )
+        except Exception:
+            pass
     logger.info("Database initialized.")
 
 

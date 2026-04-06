@@ -42,14 +42,16 @@ REQUEST_DELAY = 0.5  # seconds between requests
 # ── Helpers ───────────────────────────────────────────────
 
 def parse_date(entry) -> datetime:
+    now = datetime.now(timezone.utc)
     for attr in ("published_parsed", "updated_parsed", "created_parsed"):
         val = getattr(entry, attr, None)
         if val:
             try:
-                return datetime(*val[:6], tzinfo=timezone.utc)
+                dt = datetime(*val[:6], tzinfo=timezone.utc)
+                return min(dt, now)  # clamp future dates to now
             except Exception:
                 pass
-    return datetime.now(timezone.utc)
+    return now
 
 
 def clean_html(text: str, max_len: int = 500) -> str:
