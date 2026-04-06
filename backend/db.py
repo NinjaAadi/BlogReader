@@ -6,7 +6,14 @@ from typing import Optional, List, Dict, Any
 
 logger = logging.getLogger(__name__)
 
-DB_PATH = os.getenv("DATABASE_URL", "./blog_notifier.db")
+_raw_db_path = os.getenv("DATABASE_URL", "./blog_notifier.db")
+if os.path.isabs(_raw_db_path):
+    DB_PATH = _raw_db_path
+else:
+    # Resolve relative paths against the project root (parent of this backend/ dir)
+    # so the DB is always created at <project_root>/blog_notifier.db regardless of CWD
+    _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    DB_PATH = os.path.normpath(os.path.join(_project_root, _raw_db_path))
 
 
 def get_conn():

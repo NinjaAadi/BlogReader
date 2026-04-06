@@ -68,21 +68,27 @@ success "Frontend dependencies installed"
 step "Setting up .env file..."
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 if [ -f ".env" ]; then
-  info ".env already exists — skipping"
+  info ".env already exists — skipping creation"
 else
   cp .env.example .env
-  # Replace relative DATABASE_URL with absolute path so the app works
-  # regardless of which directory Python is invoked from
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i '' "s|DATABASE_URL=\./|DATABASE_URL=$SCRIPT_DIR/|" .env
-  else
-    sed -i "s|DATABASE_URL=\./|DATABASE_URL=$SCRIPT_DIR/|" .env
-  fi
   success "Created .env from .env.example"
   echo ""
   warn "ACTION REQUIRED: Edit .env and fill in your Telegram credentials:"
   echo -e "  ${CYAN}BOT_TOKEN${NC}  — get from @BotFather on Telegram"
   echo -e "  ${CYAN}CHAT_ID${NC}    — your Telegram user/chat ID"
+fi
+
+# Always ensure DATABASE_URL is an absolute path for THIS machine.
+# Handles: first-time setup, re-runs, and .env copied/cloned from another machine.
+CURRENT_DB=$(grep "^DATABASE_URL=" .env | cut -d= -f2-)
+CURRENT_DB_DIR=$(dirname "$CURRENT_DB")
+if [[ "$CURRENT_DB" != /* ]] || [[ ! -d "$CURRENT_DB_DIR" ]]; then
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' "s|^DATABASE_URL=.*|DATABASE_URL=$SCRIPT_DIR/blog_notifier.db|" .env
+  else
+    sed -i "s|^DATABASE_URL=.*|DATABASE_URL=$SCRIPT_DIR/blog_notifier.db|" .env
+  fi
+  success "Set DATABASE_URL → $SCRIPT_DIR/blog_notifier.db"
 fi
 
 # ── 7. Initialise database ─────────────────────────────────

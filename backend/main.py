@@ -395,4 +395,5 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=int(os.getenv("BACKEND_PORT", 8000)),
         reload=True,
+        reload_dirs=[os.path.dirname(os.path.abspath(__file__))],
     )
