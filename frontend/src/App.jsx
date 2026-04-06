@@ -122,7 +122,7 @@ export default function App() {
   useEffect(() => {
     Promise.all([loadStats(), loadTopics(), loadSources('All'), loadTrending()])
     loadArticles()
-    const interval = setInterval(() => { loadStats(); loadTrending() }, 60_000)
+    const interval = setInterval(() => { loadStats(); loadTrending(); loadArticles() }, 30_000)
     return () => clearInterval(interval)
   }, [])
 
