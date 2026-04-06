@@ -12,6 +12,21 @@ CHAT_ID   = os.getenv("CHAT_ID", "")
 _NOTIFY_TOPICS_RAW = os.getenv("NOTIFY_TOPICS", "")
 NOTIFY_TOPICS = {t.strip() for t in _NOTIFY_TOPICS_RAW.split(",") if t.strip()} if _NOTIFY_TOPICS_RAW else set()
 
+_paused = False
+
+
+def pause_notifications():
+    global _paused
+    _paused = True
+    logger.info("Telegram notifications paused.")
+
+
+def resume_notifications():
+    global _paused
+    _paused = False
+    logger.info("Telegram notifications resumed.")
+
+
 TOPIC_EMOJI: Dict[str, str] = {
     "AI/ML":              "🤖",
     "AI News":            "📰",
@@ -55,6 +70,9 @@ def _format_date(pub) -> str:
 def send_notification(article: Dict) -> None:
     if not BOT_TOKEN or not CHAT_ID:
         logger.debug("Telegram not configured — skipping notification.")
+        return
+    if _paused:
+        logger.debug("Notifications paused — skipping.")
         return
     # Topic filter: skip if NOTIFY_TOPICS is set and this topic isn't in it
     if NOTIFY_TOPICS and article.get("topic") not in NOTIFY_TOPICS:

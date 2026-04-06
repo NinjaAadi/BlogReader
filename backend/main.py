@@ -41,6 +41,7 @@ from db import (
 from fetcher import fetch_all_sources
 from scheduler import start_scheduler, stop_scheduler, get_scheduler_jobs
 from notifier import send_test_message
+from bot import start_bot, stop_bot
 
 logging.basicConfig(
     level=logging.INFO,
@@ -63,10 +64,12 @@ async def lifespan(app: FastAPI):
     t.start()
 
     start_scheduler(fetch_all_sources)
+    start_bot()
     yield
 
     # ── Shutdown ─────────────────────────────────────
     stop_scheduler()
+    stop_bot()
 
 
 app = FastAPI(
