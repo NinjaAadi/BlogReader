@@ -66,10 +66,18 @@ success "Frontend dependencies installed"
 
 # ── 6. Environment file ────────────────────────────────────
 step "Setting up .env file..."
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 if [ -f ".env" ]; then
   info ".env already exists — skipping"
 else
   cp .env.example .env
+  # Replace relative DATABASE_URL with absolute path so the app works
+  # regardless of which directory Python is invoked from
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' "s|DATABASE_URL=\./|DATABASE_URL=$SCRIPT_DIR/|" .env
+  else
+    sed -i "s|DATABASE_URL=\./|DATABASE_URL=$SCRIPT_DIR/|" .env
+  fi
   success "Created .env from .env.example"
   echo ""
   warn "ACTION REQUIRED: Edit .env and fill in your Telegram credentials:"

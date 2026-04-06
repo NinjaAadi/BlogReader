@@ -27,20 +27,29 @@ A self-hosted engineering blog aggregator that pulls the latest posts from **270
 
 ---
 
-## Quick Start (3 commands)
+## Quick Start
+
+### macOS / Linux
 
 ```bash
 git clone https://github.com/NinjaAadi/BlogReader.git
 cd BlogReader
 
-# 1. Install everything
-bash setup.sh
+bash setup.sh     # install everything
+nano .env         # add Telegram credentials (optional)
+./start.sh        # start both services
+```
 
-# 2. Add your Telegram credentials (optional — app works without them)
-nano .env          # or open with any editor
+### Windows
 
-# 3. Start both services
-./start.sh
+```
+git clone https://github.com/NinjaAadi/BlogReader.git
+cd BlogReader
+
+setup.bat         # install everything
+notepad .env      # add Telegram credentials (optional)
+start.bat         # start both services
+stop.bat          # stop both services
 ```
 
 Open **http://localhost:5173** in your browser.
@@ -365,12 +374,15 @@ curl -X POST http://localhost:8000/api/digest
 ## Project Structure
 
 ```
-blog-notifier/
-├── setup.sh              ← Run once to install everything
-├── start.sh              ← Start both services (kills old processes first)
+BlogReader/
+├── setup.sh              ← macOS/Linux: run once to install everything
+├── start.sh              ← macOS/Linux: start both services
+├── setup.bat             ← Windows: run once to install everything
+├── start.bat             ← Windows: start both services
+├── stop.bat              ← Windows: stop both services
 ├── .env                  ← Your local config (not committed)
 ├── .env.example          ← Template
-├── sources.yaml          ← All 270+ blog sources
+├── sources.yaml          ← All 312+ blog sources
 ├── requirements.txt      ← Python dependencies
 ├── backend/
 │   ├── main.py           ← FastAPI app + startup
@@ -419,6 +431,23 @@ tail -50 backend.log
 **SSL errors on macOS**
 - The project uses `truststore` to pull certs from the macOS system keychain automatically — no manual fix needed
 - If errors persist: System Preferences → Software Update
+
+**Windows — `setup.bat` or `start.bat` won't open / says "Access Denied"**
+- Right-click the `.bat` file → **Run as Administrator**
+
+**Windows — "Python is not found" even after installing**
+- During Python install, tick **"Add Python to PATH"**
+- After installing, close and reopen the terminal/file explorer, then try again
+
+**Windows — "Node.js is not found" even after installing**
+- Restart your PC after installing Node.js — it needs a fresh PATH
+
+**Windows — backend starts but articles don't load**
+- Open `backend.log` in the project folder to see the error
+- Most common cause: `DATABASE_URL` not set correctly — run `setup.bat` again to fix it
+
+**Windows — port already in use**
+- Run `stop.bat` first, then `start.bat` again
 
 ---
 

@@ -31,10 +31,23 @@ fi
 kill_port() {
   local port=$1
   local pids
-  pids=$(lsof -ti :"$port" 2>/dev/null || true)
-  if [ -n "$pids" ]; then
-    echo "$pids" | xargs kill -9 2>/dev/null || true
-    info "Killed existing process on port $port"
+  # lsof works on macOS and most Linux distros with lsof installed
+  if command -v lsof &>/dev/null; then
+    pids=$(lsof -ti :"$port" 2>/dev/null || true)
+    if [ -n "$pids" ]; then
+      echo "$pids" | xargs kill -9 2>/dev/null || true
+      info "Killed existing process on port $port"
+    fi
+  # fuser is available on most Linux systems without lsof
+  elif command -v fuser &>/dev/null; then
+    fuser -k "${port}/tcp" 2>/dev/null && info "Killed existing process on port $port" || true
+  # fallback: ss + awk (always available on modern Linux)
+  else
+    pids=$(ss -tlnp "sport = :$port" 2>/dev/null | awk 'NR>1 {match($6,/pid=([0-9]+)/,a); if(a[1]) print a[1]}' || true)
+    if [ -n "$pids" ]; then
+      echo "$pids" | xargs kill -9 2>/dev/null || true
+      info "Killed existing process on port $port"
+    fi
   fi
 }
 
@@ -106,9 +119,11 @@ echo ""
 echo -e "  Press ${BOLD}Ctrl+C${NC} to stop both services."
 echo ""
 
-# Open browser if on macOS
+# Open browser (macOS: open, Linux: xdg-open)
 if command -v open &>/dev/null; then
   sleep 1 && open "http://localhost:${FRONTEND_PORT}" &
+elif command -v xdg-open &>/dev/null; then
+  sleep 1 && xdg-open "http://localhost:${FRONTEND_PORT}" &
 fi
 
 # ── Wait and handle Ctrl+C ─────────────────────────────────
