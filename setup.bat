@@ -103,6 +103,17 @@ if exist ".env" (
     echo           CHAT_ID    ^<-- your Telegram user ID
 )
 
+:: ── 7. Initialise database ───────────────────────────────
+echo.
+echo [INFO]  Initialising database...
+venv\Scripts\python -c "import sys, os; sys.path.insert(0,'backend'); from dotenv import load_dotenv; load_dotenv('.env'); from db import init_db, load_sources_from_yaml; init_db(); load_sources_from_yaml(); print('Database ready.')"
+if errorlevel 1 (
+    echo [ERROR] Failed to initialise database.
+    pause
+    exit /b 1
+)
+echo [OK]    Database created and sources loaded
+
 :: ── Done ─────────────────────────────────────────────────
 echo.
 echo   ==========================================

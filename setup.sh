@@ -85,6 +85,20 @@ else
   echo -e "  ${CYAN}CHAT_ID${NC}    — your Telegram user/chat ID"
 fi
 
+# ── 7. Initialise database ─────────────────────────────────
+step "Initialising database..."
+venv/bin/python - << PYEOF
+import sys, os
+sys.path.insert(0, 'backend')
+from dotenv import load_dotenv
+load_dotenv('.env')
+from db import init_db, load_sources_from_yaml
+init_db()
+load_sources_from_yaml()
+print('Database ready.')
+PYEOF
+success "Database created and sources loaded"
+
 # ── Done ───────────────────────────────────────────────────
 echo ""
 echo -e "${GREEN}${BOLD}  Setup complete!${NC}"
