@@ -157,7 +157,7 @@ export default function ArticleReader({ article, onClose, onBookmark }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 backdrop-blur-sm animate-fade-in overflow-y-auto py-6 px-4"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/80 backdrop-blur-sm animate-fade-in overflow-y-auto py-3 px-2 sm:py-6 sm:px-4"
       onClick={onClose}
     >
       <div
@@ -165,7 +165,7 @@ export default function ArticleReader({ article, onClose, onBookmark }) {
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-surface border-b border-border rounded-t-2xl px-6 py-4 flex items-start gap-3">
+        <div className="sticky top-0 bg-surface border-b border-border rounded-t-2xl px-4 sm:px-6 py-3 sm:py-4 flex items-start gap-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-2 flex-wrap">
               <span className={`inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full border bg-white/5 ${meta.pill}`}>
@@ -213,7 +213,7 @@ export default function ArticleReader({ article, onClose, onBookmark }) {
         </div>
 
         {/* Body */}
-        <div className="px-6 py-5 max-h-[70vh] overflow-y-auto">
+        <div className="px-4 sm:px-6 py-4 sm:py-5 max-h-[65vh] overflow-y-auto">
           {loading ? (
             <div className="flex flex-col gap-3 py-4">
               {[100, 80, 90, 70, 95, 60].map((w, i) => (
@@ -256,7 +256,7 @@ export default function ArticleReader({ article, onClose, onBookmark }) {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-border px-6 py-3 flex items-center gap-3 rounded-b-2xl">
+        <div className="border-t border-border px-4 sm:px-6 py-3 flex items-center gap-3 rounded-b-2xl">
           <a
             href={article.url}
             target="_blank"
@@ -269,7 +269,7 @@ export default function ArticleReader({ article, onClose, onBookmark }) {
             Open Original
           </a>
           <button onClick={onClose} className="btn-outline text-sm">Close</button>
-          <span className="ml-auto text-[10px] text-muted">Press Esc to close</span>
+          <span className="hidden sm:inline ml-auto text-[10px] text-muted">Press Esc to close</span>
         </div>
       </div>
     </div>

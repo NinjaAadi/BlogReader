@@ -325,7 +325,7 @@ export default function App() {
   const filtered = articles
 
   return (
-    <div className="min-h-screen bg-bg flex flex-col">
+    <div className="min-h-screen bg-bg flex flex-col overflow-x-hidden">
 
       {/* ── Header ── */}
       <header className="relative bg-surface border-b border-border overflow-hidden">

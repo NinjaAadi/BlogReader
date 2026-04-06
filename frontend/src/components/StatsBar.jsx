@@ -2,7 +2,7 @@ export default function StatsBar({ stats, onFetch, fetching }) {
   return (
     <div className="border-b border-border bg-surface/80 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center gap-x-3 sm:gap-x-6 gap-y-2">
-        <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-5 gap-y-1">
           <StatChip
             icon={
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,7 +51,7 @@ export default function StatsBar({ stats, onFetch, fetching }) {
           )}
         </div>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="hidden sm:flex ml-auto items-center gap-2">
           {/* Live indicator */}
           <span className="hidden sm:flex items-center gap-1.5 text-xs text-muted">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse-dot" />
