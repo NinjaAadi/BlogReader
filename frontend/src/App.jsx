@@ -900,9 +900,20 @@ function SourcePicker({ sources, value, onChange }) {
   const containerRef = useRef(null)
   const inputRef = useRef(null)
 
-  const filtered = query.trim()
-    ? sources.filter(s => (s.name || '').toLowerCase().includes(query.toLowerCase()))
-    : sources
+  const filtered = (() => {
+    const q = query.trim().toLowerCase()
+    if (!q) return sources
+    const matches = sources.filter(s => (s.name || '').toLowerCase().includes(q))
+    // Sort: names that start with the query appear before mid-word matches
+    matches.sort((a, b) => {
+      const aStarts = (a.name || '').toLowerCase().startsWith(q)
+      const bStarts = (b.name || '').toLowerCase().startsWith(q)
+      if (aStarts && !bStarts) return -1
+      if (!aStarts && bStarts) return 1
+      return 0
+    })
+    return matches
+  })()
 
   // Close on click outside
   useEffect(() => {

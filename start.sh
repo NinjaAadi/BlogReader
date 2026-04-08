@@ -103,7 +103,7 @@ done
 # ── Start frontend ─────────────────────────────────────────
 info "Starting frontend..."
 cd frontend
-nohup npm run dev > ../frontend.log 2>&1 &
+nohup npm run dev -- --host > ../frontend.log 2>&1 &
 FRONTEND_PID=$!
 cd ..
 echo $FRONTEND_PID > frontend.pid
