@@ -131,6 +131,25 @@ def upsert_article(
             return False
 
 
+def _interleave_sources(articles: List[Dict]) -> List[Dict]:
+    """Round-robin articles by source_name so the feed mixes sources evenly."""
+    from collections import defaultdict
+    groups: dict = defaultdict(list)
+    for a in articles:
+        groups[a.get("source_name") or ""].append(a)
+    # Sort groups by source name for deterministic, stable ordering
+    queues = [groups[k] for k in sorted(groups)]
+    result: list = []
+    while queues:
+        next_queues = []
+        for q in queues:
+            result.append(q.pop(0))
+            if q:
+                next_queues.append(q)
+        queues = next_queues
+    return result
+
+
 def get_articles(
     topic: Optional[str] = None,
     source: Optional[str] = None,
@@ -164,7 +183,12 @@ def get_articles(
     query += f" LIMIT {per_page} OFFSET {(page - 1) * per_page}"
     with get_conn() as conn:
         rows = conn.execute(query, params).fetchall()
-        return [dict(r) for r in rows]
+        articles = [dict(r) for r in rows]
+    # When showing a mixed feed (no single source selected) interleave articles
+    # round-robin by source so Dev.to / Netflix / etc. don't all cluster together.
+    if not (source and source.lower() != "all"):
+        articles = _interleave_sources(articles)
+    return articles
 
 
 def get_article_by_id(article_id: int) -> Optional[Dict]:
