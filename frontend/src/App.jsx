@@ -897,15 +897,17 @@ function ErrorState({ message, onRetry }) {
 function SourcePicker({ sources, value, onChange }) {
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
-  const ref = useRef(null)
+  const containerRef = useRef(null)
+  const inputRef = useRef(null)
 
   const filtered = query.trim()
-    ? sources.filter(s => s.name.toLowerCase().includes(query.toLowerCase()))
+    ? sources.filter(s => (s.name || '').toLowerCase().includes(query.toLowerCase()))
     : sources
 
+  // Close on click outside
   useEffect(() => {
     const handler = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
         setOpen(false)
         setQuery('')
       }
@@ -914,39 +916,43 @@ function SourcePicker({ sources, value, onChange }) {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
-  useEffect(() => {
-    if (!open) setQuery('')
-  }, [open])
-
   const select = (name) => {
     onChange(name)
+    setQuery('')
     setOpen(false)
+    inputRef.current?.blur()
+  }
+
+  const handleFocus = () => {
+    setOpen(true)
+    setQuery('')
   }
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Escape') { setOpen(false); setQuery('') }
+    if (e.key === 'Escape') {
+      setOpen(false)
+      setQuery('')
+      inputRef.current?.blur()
+    }
   }
 
+  // When open: show the live query so the user can type to filter.
+  // When closed: show the selected source name (read-only).
+  const displayValue = open ? query : (value === 'All' ? 'All Sources' : value)
+
   return (
-    <div ref={ref} className="relative flex-shrink-0">
-      {open ? (
-        <input
-          autoFocus
-          type="text"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Search sources…"
-          className="input pl-3 pr-8 py-2 w-44 text-sm"
-        />
-      ) : (
-        <button
-          onClick={() => setOpen(true)}
-          className="input appearance-none pl-3 pr-8 py-2 cursor-pointer text-left w-44 truncate text-sm"
-        >
-          {value === 'All' ? 'All Sources' : value}
-        </button>
-      )}
+    <div ref={containerRef} className="relative flex-shrink-0">
+      <input
+        ref={inputRef}
+        type="text"
+        value={displayValue}
+        readOnly={!open}
+        onFocus={handleFocus}
+        onChange={e => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder={open ? 'Search sources…' : 'All Sources'}
+        className="input pl-3 pr-8 py-2 w-44 text-sm cursor-pointer"
+      />
       <svg className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
       </svg>
