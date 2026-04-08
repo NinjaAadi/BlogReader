@@ -127,7 +127,7 @@ export default function App() {
     if (sinceDays) p.set('days', String(sinceDays))
     if (search.trim()) p.set('search', search.trim())
     const qs = p.toString()
-    history.replaceState(null, '', qs ? `?${qs}` : window.location.pathname)
+    window.history.replaceState(null, '', qs ? `?${qs}` : window.location.pathname)
   }, [activeTopic, activeSource, showUnread, sinceDays, search])
 
   // Initial load — pass false to loadSources so it doesn't reset the source we read from the URL
