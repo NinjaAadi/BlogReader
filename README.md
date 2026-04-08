@@ -12,7 +12,7 @@ A self-hosted engineering blog aggregator that pulls the latest posts from **270
 | **Auto-fetch** | Every 5 hours via APScheduler |
 | **Telegram alerts** | Instant message for every new article (requires VPN in some regions) |
 | **Telegram bot commands** | Control the app from Telegram — `/random`, `/fetch`, `/stats`, `/digest`, `/topic`, `/pause`, `/resume` |
-| **React UI** | Topic/source filter, full-text search, unread toggle, pagination, random-unread |
+| **React UI** | Topic filter, searchable source picker, full-text search, unread toggle, pagination, random-unread |
 | **PWA** | Install as a home screen app on Android, iPhone, or desktop |
 | **Daily DB cleanup** | Articles older than 90 days deleted at 03:00 UTC; unread & 10 most recent per source kept |
 | **REST API** | Full FastAPI backend with interactive docs at `/docs` |
@@ -206,6 +206,24 @@ The app is a Progressive Web App — you can add it to your home screen so it op
 | **Tap the bookmark icon** on a card | Bookmarks / unbookmarks |
 
 The in-app reader fetches and displays the full article text inside the app — no need to leave BlogReader.
+
+---
+
+## Searchable Source Picker
+
+The source picker lets you quickly find and filter by any of the 270+ sources without scrolling through the full list.
+
+**How to use:**
+
+1. Click the **source dropdown** (shows "All Sources" by default) in the filter bar
+2. Start typing — the list narrows in real time as you type
+3. Results are ranked by relevance:
+   - Sources whose names **start with** your query appear first
+   - Sources that contain your query **anywhere** in the name appear below
+4. Click any source to filter the feed to that source only
+5. Press **Escape** or click outside to close without changing the selection
+
+**URL persistence** — the selected source (along with topic, unread toggle, search, and time range) is saved to the URL. Refreshing the page or sharing the URL preserves all active filters.
 
 ---
 
