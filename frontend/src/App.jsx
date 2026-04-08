@@ -979,7 +979,7 @@ function SourcePicker({ sources, value, onChange }) {
             <div className="px-3 py-2 text-sm text-muted/50 italic">No sources match</div>
           ) : filtered.map(s => (
             <div
-              key={s.id}
+              key={s.name}
               className={`px-3 py-2 text-sm cursor-pointer hover:bg-white/5 truncate ${value === s.name ? 'text-blue-400' : 'text-slate-300'}`}
               onMouseDown={() => select(s.name)}
             >
