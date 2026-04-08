@@ -21,12 +21,12 @@ export default function App() {
   const [fetching, setFetching] = useState(false)
   const [error, setError]       = useState(null)
 
-  // Feed filters
-  const [activeTopic, setActiveTopic]   = useState('All')
-  const [activeSource, setActiveSource] = useState('All')
-  const [showUnread, setShowUnread]     = useState(false)
-  const [search, setSearch]             = useState('')
-  const [sinceDays, setSinceDays]       = useState(null)
+  // Feed filters — initialised from URL so they survive page refresh
+  const [activeTopic, setActiveTopic]   = useState(() => new URLSearchParams(window.location.search).get('topic') || 'All')
+  const [activeSource, setActiveSource] = useState(() => new URLSearchParams(window.location.search).get('source') || 'All')
+  const [showUnread, setShowUnread]     = useState(() => new URLSearchParams(window.location.search).get('unread') === 'true')
+  const [search, setSearch]             = useState(() => new URLSearchParams(window.location.search).get('search') || '')
+  const [sinceDays, setSinceDays]       = useState(() => { const d = new URLSearchParams(window.location.search).get('days'); return d ? Number(d) : null })
   const [page, setPage]                 = useState(1)
   const searchTimer = useRef(null)
 
@@ -71,10 +71,10 @@ export default function App() {
     setTopics(d.topics || ['All'])
   }, [])
 
-  const loadSources = useCallback(async (topic) => {
+  const loadSources = useCallback(async (topic, resetSource = true) => {
     const d = await api.getSources(topic).catch(() => ({ sources: [] }))
     setSources(d.sources || [])
-    setActiveSource('All')
+    if (resetSource) setActiveSource('All')
   }, [])
 
   const loadArticles = useCallback(async (filters = {}) => {
@@ -118,9 +118,21 @@ export default function App() {
     setTrending(list.slice(0, 12))
   }, [])
 
-  // Initial load
+  // Sync filter state to URL so filters survive page refresh
   useEffect(() => {
-    Promise.all([loadStats(), loadTopics(), loadSources('All'), loadTrending()])
+    const p = new URLSearchParams()
+    if (activeTopic !== 'All') p.set('topic', activeTopic)
+    if (activeSource !== 'All') p.set('source', activeSource)
+    if (showUnread) p.set('unread', 'true')
+    if (sinceDays) p.set('days', String(sinceDays))
+    if (search.trim()) p.set('search', search.trim())
+    const qs = p.toString()
+    history.replaceState(null, '', qs ? `?${qs}` : window.location.pathname)
+  }, [activeTopic, activeSource, showUnread, sinceDays, search])
+
+  // Initial load — pass false to loadSources so it doesn't reset the source we read from the URL
+  useEffect(() => {
+    Promise.all([loadStats(), loadTopics(), loadSources(activeTopic, false), loadTrending()])
     loadArticles()
     const interval = setInterval(() => { loadStats(); loadTrending(); loadArticles() }, 30_000)
     return () => clearInterval(interval)
@@ -463,19 +475,7 @@ export default function App() {
 
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
               <div className="flex items-center gap-2 flex-1 min-w-0">
-              <div className="relative flex-shrink-0">
-                <select
-                  value={activeSource}
-                  onChange={e => setActiveSource(e.target.value)}
-                  className="input appearance-none pl-3 pr-8 py-2 cursor-pointer"
-                >
-                  <option value="All">All Sources</option>
-                  {sources.map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
-                </select>
-                <svg className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+              <SourcePicker sources={sources} value={activeSource} onChange={setActiveSource} />
 
               <div className="relative flex-1 min-w-0">
                 <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -599,7 +599,7 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-                {filtered.length === PER_PAGE && (
+                {(page > 1 || filtered.length === PER_PAGE) && (
                   <div className="flex justify-center items-center gap-3 mt-8">
                     {page > 1 && (
                       <button onClick={() => setPage(page - 1)} className="btn-outline text-sm flex items-center gap-1.5">
@@ -608,10 +608,12 @@ export default function App() {
                       </button>
                     )}
                     <span className="px-4 py-2 rounded-lg border border-border text-sm text-muted tabular-nums">Page {page}</span>
-                    <button onClick={() => setPage(page + 1)} className="btn-outline text-sm flex items-center gap-1.5">
-                      Next
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                    </button>
+                    {filtered.length === PER_PAGE && (
+                      <button onClick={() => setPage(page + 1)} className="btn-outline text-sm flex items-center gap-1.5">
+                        Next
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                    )}
                   </div>
                 )}
               </div>
@@ -888,6 +890,87 @@ function ErrorState({ message, onRetry }) {
       <p className="text-white font-semibold mb-1">Could not load articles</p>
       <p className="text-muted text-sm mb-5">{message}</p>
       <button onClick={onRetry} className="btn-primary text-sm">Retry</button>
+    </div>
+  )
+}
+
+function SourcePicker({ sources, value, onChange }) {
+  const [query, setQuery] = useState('')
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+
+  const filtered = query.trim()
+    ? sources.filter(s => s.name.toLowerCase().includes(query.toLowerCase()))
+    : sources
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false)
+        setQuery('')
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  useEffect(() => {
+    if (!open) setQuery('')
+  }, [open])
+
+  const select = (name) => {
+    onChange(name)
+    setOpen(false)
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') { setOpen(false); setQuery('') }
+  }
+
+  return (
+    <div ref={ref} className="relative flex-shrink-0">
+      {open ? (
+        <input
+          autoFocus
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Search sources…"
+          className="input pl-3 pr-8 py-2 w-44 text-sm"
+        />
+      ) : (
+        <button
+          onClick={() => setOpen(true)}
+          className="input appearance-none pl-3 pr-8 py-2 cursor-pointer text-left w-44 truncate text-sm"
+        >
+          {value === 'All' ? 'All Sources' : value}
+        </button>
+      )}
+      <svg className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+      {open && (
+        <div className="absolute top-full left-0 mt-1 w-64 bg-surface border border-border rounded-xl shadow-2xl z-50 max-h-60 overflow-y-auto">
+          <div
+            className={`px-3 py-2 text-sm cursor-pointer hover:bg-white/5 ${value === 'All' ? 'text-blue-400' : 'text-muted'}`}
+            onMouseDown={() => select('All')}
+          >
+            All Sources
+          </div>
+          {filtered.length === 0 ? (
+            <div className="px-3 py-2 text-sm text-muted/50 italic">No sources match</div>
+          ) : filtered.map(s => (
+            <div
+              key={s.id}
+              className={`px-3 py-2 text-sm cursor-pointer hover:bg-white/5 truncate ${value === s.name ? 'text-blue-400' : 'text-slate-300'}`}
+              onMouseDown={() => select(s.name)}
+            >
+              {s.name}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
