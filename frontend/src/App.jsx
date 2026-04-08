@@ -901,9 +901,16 @@ function SourcePicker({ sources, value, onChange }) {
   const inputRef = useRef(null)
 
   const filtered = (() => {
+    // Deduplicate by name first (two sources can share a name if they have different URLs)
+    const seen = new Set()
+    const unique = sources.filter(s => {
+      if (seen.has(s.name)) return false
+      seen.add(s.name)
+      return true
+    })
     const q = query.trim().toLowerCase()
-    if (!q) return sources
-    const matches = sources.filter(s => (s.name || '').toLowerCase().includes(q))
+    if (!q) return unique
+    const matches = unique.filter(s => (s.name || '').toLowerCase().includes(q))
     // Sort: names that start with the query appear before mid-word matches
     matches.sort((a, b) => {
       const aStarts = (a.name || '').toLowerCase().startsWith(q)
