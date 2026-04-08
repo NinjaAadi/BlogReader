@@ -590,6 +590,62 @@ tail -50 backend.log
 
 ---
 
+
+
+## 🔧 Logging Configuration (Console vs File)
+
+The backend supports configurable logging via the `.env` file.
+
+### 1. Set Logging Mode
+
+In your `.env` file:
+
+LOG_MODE=console   # logs to terminal (development)
+# OR
+LOG_MODE=file      # logs to backend.log (production)
+
+---
+
+### 2. Important: Load `.env` in `start.sh`
+
+Bash does NOT automatically read `.env`, so we explicitly load it:
+
+set -a
+source .env
+set +a
+
+Place this near the top of `start.sh` (after cd "$(dirname "$0")").
+
+---
+
+### 3. Backend Startup Logic
+
+Update backend start in `start.sh`:
+
+if [ "$LOG_MODE" = "console" ]; then
+  venv/bin/python backend/main.py &
+else
+  nohup venv/bin/python backend/main.py > backend.log 2>&1 </dev/null &
+fi
+
+---
+
+### 4. How It Works
+
+- LOG_MODE=console → logs printed in terminal
+- LOG_MODE=file → logs written to backend.log
+- Python switches between StreamHandler and FileHandler
+
+---
+
+### ✅ Summary
+
+- `.env` controls logging behavior
+- `start.sh` loads `.env` and decides output
+- `main.py` configures logging handlers accordingly
+
+
+
 ## Contributing
 
 Contributions are welcome! To add sources, fix broken RSS feeds, or improve the UI:

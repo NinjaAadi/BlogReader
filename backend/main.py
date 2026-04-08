@@ -1,4 +1,6 @@
 import logging
+from logging.handlers import TimedRotatingFileHandler
+
 import os
 from contextlib import asynccontextmanager
 from typing import Optional
@@ -43,13 +45,39 @@ from scheduler import start_scheduler, stop_scheduler, get_scheduler_jobs
 from notifier import send_test_message
 from bot import start_bot, stop_bot
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    datefmt="%H:%M:%S",
-)
-logger = logging.getLogger(__name__)
 
+LOG_MODE = os.getenv("LOG_MODE")  # "file" or "console"
+
+
+
+if LOG_MODE == "console":
+    handler = logging.StreamHandler()  # terminal
+else:
+    handler = TimedRotatingFileHandler(
+        "backend.log",
+        when="H",
+        interval=1,
+        backupCount=1
+    )
+
+
+formatter = logging.Formatter(
+    "%(asctime)s - %(levelname)s - %(message)s"
+)
+handler.setFormatter(formatter)
+
+# Get root logger
+root_logger = logging.getLogger()
+root_logger.setLevel(logging.INFO)
+
+# REMOVE all existing handlers (important)
+for h in root_logger.handlers[:]:
+    root_logger.removeHandler(h)
+
+# Add only file handler
+root_logger.addHandler(handler)
+
+logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -397,6 +425,8 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=int(os.getenv("BACKEND_PORT", 8000)),
-        reload=True,
+        reload=False,
         reload_dirs=[os.path.dirname(os.path.abspath(__file__))],
+        log_config=None,     # ⭐ IMPORTANT
+        access_log=False
     )

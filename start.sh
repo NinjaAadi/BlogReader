@@ -5,6 +5,10 @@
 set -e
 cd "$(dirname "$0")"
 
+set -a
+source .env
+set +a
+
 # ── Colours ────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
 CYAN='\033[0;36m'; BOLD='\033[1m'; NC='\033[0m'
@@ -50,7 +54,6 @@ kill_port() {
     fi
   fi
 }
-
 info "Clearing ports $BACKEND_PORT and $FRONTEND_PORT..."
 kill_port $BACKEND_PORT
 kill_port $FRONTEND_PORT
@@ -74,7 +77,13 @@ echo ""
 
 # ── Start backend ──────────────────────────────────────────
 info "Starting backend..."
-nohup venv/bin/python backend/main.py > backend.log 2>&1 &
+echo "LOG_MODE=$LOG_MODE"
+if [ "$LOG_MODE" = "console" ]; then
+  venv/bin/python backend/main.py &
+else
+  nohup venv/bin/python backend/main.py > backend.log 2>&1 </dev/null &
+fi
+
 BACKEND_PID=$!
 echo $BACKEND_PID > backend.pid
 
@@ -154,10 +163,5 @@ cleanup() {
   success "Stopped."
   exit 0
 }
-trap cleanup INT TERM
 
-# Keep script alive, tail logs
-tail -f backend.log &
-TAIL_PID=$!
-wait $BACKEND_PID 2>/dev/null || true
-kill $TAIL_PID 2>/dev/null || true
+wait $BACKEND_PID
